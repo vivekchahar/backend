@@ -29,18 +29,25 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'webp', 'bmp', 'gif'}
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 # ─── Download AI model if missing ──────────────────────────
-MODEL_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'waste_classifier.keras')
+MODEL_FILE = os.path.join(os.getcwd(), 'waste_classifier.keras')
+
+print("Checking model path:", MODEL_FILE)
+print("File exists:", os.path.exists(MODEL_FILE))
+
 if not os.path.exists(MODEL_FILE):
-    print("⬇️ Downloading waste classification model from Google Drive...")
+    print("⬇️ Downloading model from Google Drive...")
     try:
         import gdown
-        file_id = '1C_fSkb8Ej0tO-XPxhFPNVVwxf09uMjfr'
-        url = f'https://drive.google.com/uc?id={file_id}'
+
+        file_id = "1C_fSkb8Ej0tO-XPxhFPNVVwxf09uMjfr"
+        url = f"https://drive.google.com/uc?id={file_id}&confirm=t"
+
         gdown.download(url, MODEL_FILE, quiet=False)
+
         print("✅ Model downloaded successfully!")
+
     except Exception as e:
-        print(f"❌ Failed to download model: {e}")
-        print("⚠️ App will start but predictions may fail if model is missing.")
+        print(f"❌ Download failed: {e}")
 
 # ─── Import AI model (loads once) ──────────────────────────
 try:
