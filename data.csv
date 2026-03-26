@@ -1,0 +1,8 @@
+timestamp,waste_type,confidence,location
+2026-03-20 19:57:54,wet_waste,50.7,"Mumbai, Ward 5"
+2026-03-20 20:02:30,other_waste,91.0,Unknown
+2026-03-20 20:03:22,wet_waste,92.3,Unknown
+2026-03-20 23:35:16,dry_waste,76.7,Unknown
+2026-03-21 19:09:53,wet_waste,92.3,Unknown
+2026-03-25 23:03:47,dry_waste,90.3,Unknown
+2026-03-25 23:03:58,dry_waste,90.3,Unknown
